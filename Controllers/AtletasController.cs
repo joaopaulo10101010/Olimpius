@@ -10,7 +10,6 @@ namespace Projeto.Controllers
         private readonly Database db = new Database();
 
         public IActionResult Criar()
-
         {
 
             ViewBag.Cidades = GetCidades(); // Para dropdown 
@@ -18,13 +17,9 @@ namespace Projeto.Controllers
             return View();
         }
         [HttpPost]
-
         public IActionResult Criar(Atleta atleta)
-
         {
-
             using (var conn = db.GetConnection())
-
             {
 
                 var sql = @"INSERT INTO atletas (nomeAtleta, dataNascimento, sexo, altura, peso, codCidade) 
@@ -49,8 +44,14 @@ namespace Projeto.Controllers
 
             }
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return RedirectToAction("Index", "Edicao");
 
+        }
+
+        public IActionResult ResultAtletas()
+        {
+            return View();
         }
 
 
